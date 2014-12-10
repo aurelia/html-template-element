@@ -1,4 +1,4 @@
-# aurelia-route-recognizer
+# aurelia-html-template-element
 
 This library is part of the [Aurelia](http://www.aurelia.io/) platform and contains a polyfill for the HTMLTemplateElement extracted and decoupled from Polymer.
 
