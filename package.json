@@ -1,6 +1,6 @@
 {
   "name": "aurelia-html-template-element",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A polyfill for the HTMLTemplateElement extracted and decoupled from Polymer.",
   "keywords": [
     "aurelia",
@@ -16,7 +16,7 @@
   "main": "dist/commonjs/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/aurelia/html-template-element"
+    "url": "http://github.com/aurelia/html-template-element"
   },
   "jspm": {
     "directories": {
