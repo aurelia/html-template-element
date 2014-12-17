@@ -6,13 +6,13 @@ var stylish = require('jshint-stylish');
 var yuidoc = require("gulp-yuidoc");
 var changelog = require('conventional-changelog');
 var assign = Object.assign || require('object.assign');
-var pkg = require('./package.json');
+var bump = require('gulp-bump');
 var fs = require('fs');
 var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
 
 var path = {
-  source:'lib/**/*.js',
+  source:'src/**/*.js',
   output:'dist/',
   doc:'./doc'
 };
@@ -48,11 +48,19 @@ gulp.task('doc', function(){
     .pipe(gulp.dest(path.doc));
 });
 
+gulp.task('bump-version', function(){
+  return gulp.src(['./bower.json', './package.json'])
+    .pipe(bump({type:'patch'})) //major|minor|patch|prerelease
+    .pipe(gulp.dest('./'));
+});
+
 gulp.task('changelog', function(callback) {
-  changelog({
+  var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
+
+  return changelog({
     repository: pkg.repository.url,
     version: pkg.version,
-    file: 'CHANGELOG.md'
+    file: path.doc + '/CHANGELOG.md'
   }, function(err, log) {
     fs.writeFileSync(path.doc + '/CHANGELOG.md', log);
   });
@@ -67,9 +75,10 @@ gulp.task('build', function(callback) {
 });
 
 gulp.task('prepare-release', function(callback){
-  runSequence(
+  return runSequence(
     'build',
     'lint',
+    'bump-version',
     'doc',
     'changelog',
     callback
