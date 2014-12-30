@@ -11,6 +11,7 @@ var bump = require('gulp-bump');
 var fs = require('fs');
 var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
+var tools = require('aurelia-tools');
 
 var path = {
   source:'src/**/*.js',
@@ -43,10 +44,14 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter(stylish));
 });
 
-gulp.task('doc', function(){
-  gulp.src(path.source)
+gulp.task('doc-generate', function(){
+  return gulp.src(path.source)
     .pipe(yuidoc.parser(null, 'api.json'))
     .pipe(gulp.dest(path.doc));
+});
+
+gulp.task('doc', ['doc-generate'], function(){
+  tools.transformAPIModel(path.doc);
 });
 
 gulp.task('bump-version', function(){
