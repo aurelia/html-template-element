@@ -18,6 +18,23 @@
 
     return el.isTemplate_;
   }
+  
+  function extractTemplateFromSVGTemplate(el) {
+    var template = el.ownerDocument.createElement('template');
+    el.parentNode.insertBefore(template, el);
+
+    var attribs = el.attributes;
+    var count = attribs.length;
+    while (count-- > 0) {
+      var attrib = attribs[count];
+      template.setAttribute(attrib.name, attrib.value);
+      el.removeAttribute(attrib.name);
+    }
+
+    el.parentNode.removeChild(el);
+    return template;
+  }
+
 
   function forAllTemplatesFrom(node, fn) {
     var subTemplates = node.querySelectorAll('template');
