@@ -1,3 +1,11 @@
+## 0.2.0 (2015-04-09)
+
+
+#### Bug Fixes
+
+* **HTMLTemplateElement:** add missing function ([7344dc34](http://github.com/aurelia/html-template-element/commit/7344dc3477e9e32c2a98f1c8fdafd6c2982b8d94))
+
+
 ### 0.1.3 (2015-02-27)
 
 
