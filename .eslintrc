@@ -1,0 +1,8 @@
+{
+  "extends": "./node_modules/aurelia-tools/.eslintrc",
+  "rules": {
+    "no-var": 0,
+    "no-cond-assign": 0,
+    "no-proto": 0
+  }
+}
