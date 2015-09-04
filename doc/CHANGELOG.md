@@ -1,3 +1,11 @@
+## 0.3.0 (2015-09-04)
+
+
+#### Bug Fixes
+
+* **build:** update linting, testing and tools ([b4c4aa8b](http://github.com/aurelia/html-template-element/commit/b4c4aa8b4da8845bfe57b757547e7059d7e900dd))
+
+
 ## 0.2.0 (2015-04-09)
 
 
